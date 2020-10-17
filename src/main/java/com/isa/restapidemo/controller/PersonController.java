@@ -1,6 +1,7 @@
 package com.isa.restapidemo.controller;
 
 import com.isa.restapidemo.dto.PersonDTO;
+import com.isa.restapidemo.person.Gender;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -11,11 +12,6 @@ import javax.ws.rs.core.Response;
 @Consumes(MediaType.APPLICATION_JSON)
 public class PersonController {
 
-    @GET
-    public PersonDTO getPerson() {
-        return new PersonDTO(1, "Janek", "Kowalski");
-    }
-
     @Path("/{id}")
     @GET
     public Response getPersonById(
@@ -24,13 +20,13 @@ public class PersonController {
         if (id != 1) {
             return Response.status(404).build();
         }
-        return Response.ok(new PersonDTO(id, "Andrzej", "Nowak")).build();
+        return Response.ok(new PersonDTO(1, "A", "B", Gender.MALE)).build();
     }
 
     @GET
     @Path("/query")
     public PersonDTO getPersonbyQuery(@QueryParam("name") String name) {
-        return new PersonDTO(20, name, "Kowlaski");
+        return new PersonDTO(20, name, "Kowlaski", Gender.MALE);
     }
 
     @POST

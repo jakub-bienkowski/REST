@@ -1,26 +1,26 @@
-package com.isa.restapidemo.dto;
+package com.isa.restapidemo.person;
 
-import com.isa.restapidemo.person.Gender;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity(name="person")
+@Table
+public class Person {
 
-public class PersonDTO {
-
+    @GeneratedValue
+    @Id
     private Integer id;
+    @Column
     private String name;
+    @Column
     private String lastName;
+    @Column
     private Gender gender;
 
-    public PersonDTO() {
+    public Person (){
 
     }
-
-    public PersonDTO(Integer id, String name, String lastName, Gender gender) {
+    public Person(Integer id, String name, String lastName, Gender gender) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -62,12 +62,12 @@ public class PersonDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PersonDTO)) return false;
-        PersonDTO personDTO = (PersonDTO) o;
-        return Objects.equals(getId(), personDTO.getId()) &&
-                Objects.equals(getName(), personDTO.getName()) &&
-                Objects.equals(getLastName(), personDTO.getLastName()) &&
-                getGender() == personDTO.getGender();
+        if (!(o instanceof Person)) return false;
+        Person person = (Person) o;
+        return Objects.equals(getId(), person.getId()) &&
+                Objects.equals(getName(), person.getName()) &&
+                Objects.equals(getLastName(), person.getLastName()) &&
+                getGender() == person.getGender();
     }
 
     @Override
