@@ -27,8 +27,8 @@ public class PersonDao implements Dao<Person> {
     @Override
     public List<Person> getByLastName(String lastNameSearch) {
         TypedQuery<Person> query = entityManager.createQuery(
-                "SELECT p FROM person p WHERE p.lastName = lastName", Person.class);
-        List<Person> list = query.setParameter("lastName", lastNameSearch).getResultList();
+                "SELECT p FROM person p WHERE p.lastName like :lastName", Person.class);
+        List<Person> list = query.setParameter("lastName", "%" + lastNameSearch + "%").getResultList();
         return list;
     }
 
