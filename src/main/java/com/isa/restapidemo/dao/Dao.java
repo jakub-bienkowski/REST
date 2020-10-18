@@ -1,5 +1,6 @@
 package com.isa.restapidemo.dao;
 
+import com.isa.restapidemo.model.Patient;
 import com.isa.restapidemo.person.Person;
 
 import javax.ejb.Local;
@@ -18,7 +19,5 @@ public interface Dao <T> {
     void delete(T t);
 
     Person update (Integer id, T t);
-
-    List<Person> getByLastName(String lastNameSearch);
 
 }

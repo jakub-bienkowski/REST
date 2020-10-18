@@ -1,14 +1,15 @@
-package com.isa.restapidemo.model;
+package com.isa.restapidemo.dto;
 
-import javax.persistence.*;
+import com.isa.restapidemo.model.Patient;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.List;
 
-@Entity
-@Table(name = "address")
-public class Address {
+public class AddressDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String district;
     private String city;
@@ -16,11 +17,18 @@ public class Address {
     private String street;
     private String houseNumber;
     private int localNumber;
-    @OneToMany(fetch = FetchType.LAZY)
+
     private List<Patient> locators;
 
-    public Address() {
-
+    public AddressDTO(int id, String district, String city, String postalCode, String street, String houseNumber, int localNumber, List<Patient> locators) {
+        this.id = id;
+        this.district = district;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.localNumber = localNumber;
+        this.locators = locators;
     }
 
     public int getId() {
@@ -86,4 +94,5 @@ public class Address {
     public void setLocators(List<Patient> locators) {
         this.locators = locators;
     }
+
 }

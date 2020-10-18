@@ -1,23 +1,27 @@
-package com.isa.restapidemo.model;
+package com.isa.restapidemo.dto;
 
-import javax.persistence.*;
+import com.isa.restapidemo.model.Patient;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.List;
 
-@Entity
-@Table(name = "doctor")
-public class Doctor {
+public class DoctorDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String surname;
     private Integer pesel;
-    @OneToMany(fetch = FetchType.LAZY)
     private List<Patient> patientList;
 
-    public Doctor() {
-
+    public DoctorDTO(int id, String name, String surname, Integer pesel, List<Patient> patientList) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.pesel = pesel;
+        this.patientList = patientList;
     }
 
     public int getId() {
