@@ -32,7 +32,10 @@ public class PersonService {
 
     public List<PersonDTO> getAll (){
         return personDao.getAll().stream().map(person -> new PersonDTO(person.getId(),person.getName(),person.getLastName(),person.getGender())).collect(Collectors.toList());
+    }
 
+    public List<PersonDTO> findByLastName(String lastNameSearch) {
+        return personDao.getByLastName(lastNameSearch).stream().map(person -> new PersonDTO(person.getId(), person.getName(), person.getLastName(), person.getGender())).collect(Collectors.toList());
     }
 
     public boolean delete (Integer id){

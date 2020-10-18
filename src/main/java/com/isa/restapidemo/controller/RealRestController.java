@@ -22,6 +22,13 @@ public class RealRestController {
     }
 
     @GET
+    @Path("/search")
+    public List<PersonDTO> findByLastName(@QueryParam("lastName") String lastNameSearch) {
+        return personService.findByLastName(lastNameSearch);
+    }
+
+
+    @GET
     @Path("/{id}")
     public PersonDTO findOneById(@PathParam("id") Integer id) {
         return personService.getById(id);
@@ -46,6 +53,7 @@ public class RealRestController {
             return Response.status(200).build();
         } else return Response.status(404).build();
     }
+
 
 
 
