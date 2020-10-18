@@ -1,16 +1,14 @@
 package com.isa.restapidemo.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.isa.restapidemo.person.Gender;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Objects;
 
 
 public class PersonDTO {
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Integer id;
     private String name;
     private String lastName;

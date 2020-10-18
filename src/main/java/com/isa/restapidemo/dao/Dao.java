@@ -19,4 +19,6 @@ public interface Dao <T> {
 
     Person update (Integer id, T t);
 
+    List<Person> getByLastName(String lastNameSearch);
+
 }

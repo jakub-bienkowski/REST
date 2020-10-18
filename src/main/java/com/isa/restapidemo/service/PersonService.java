@@ -1,6 +1,6 @@
 package com.isa.restapidemo.service;
 
-import com.isa.restapidemo.dao.PersonDao;
+import com.isa.restapidemo.dao.Dao;
 import com.isa.restapidemo.dto.DtoBuilder;
 import com.isa.restapidemo.dto.PersonDTO;
 import com.isa.restapidemo.person.Person;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class PersonService {
 
     @Inject
-    PersonDao personDao;
+    Dao<Person> personDao;
 
     public PersonDTO save (PersonDTO personDTO){
 
